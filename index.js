@@ -3,17 +3,19 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+/********* CORS **********/
+app.use(cors());
 
+/********* ROUTES **********/
 const airBnBed = require("./routes/backEndAirBnb/index.js");
-app.use("/airBnBed", airBnBed);
+app.use("/airbnbed", airBnBed);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome on my portfolio Backend" });
 });
 
-app.all("*", (req, res) => {
+app.all("{*splat}", (req, res) => {
   console.log("All routes");
 });
 app.listen(process.env.PORT, (req, res) => {

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const User = require("../../models/User");
 const uid2 = require("uid2");
 const { SHA256 } = require("crypto-js");
 const encBase64 = require("crypto-js/enc-base64");
@@ -16,18 +16,12 @@ router.post("/signup", async (req, res) => {
   console.log("req.body:", req.body);
   // console.log("req.body", req.body);
   if (password !== undefined && email !== undefined) {
-    const userExist = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email });
     // console.log("userExist", userExist);
     // si l'utilisateur existe, retourner un mssg d'erreur
-    if (userExist) {
-      return res.status(400).json({ message: "bad request" });
-    }
-    //sinon si password est egale à confirmPassword alors:
-    else {
+    if (!user) {
       if (password !== confirmPassword) {
-        return res
-          .status(400)
-          .json({ message: "les deux mots de passe ne sont pas identiques" });
+        return res.status(400).json({ message: "password does not match" });
       } else {
         try {
           const salt = uid2(24);
@@ -59,7 +53,10 @@ router.post("/signup", async (req, res) => {
           console.log("error", error);
         }
       }
+    } else {
+      return res.status(400).json({ message: "account already exist" });
     }
+    //sinon si password est egale à confirmPassword alors
   }
 });
 

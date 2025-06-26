@@ -1,12 +1,13 @@
 require("dotenv").config();
 const express = require("express");
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGODB_URI);
-//import routes:
 
-const login = require("./routes/login.routes");
-const signup = require("./routes/signup.routes");
+//************ import routes *******//
+
+const login = require("./routes/auth/login.routes");
+const signup = require("./routes/auth/signup.routes");
 
 router.use("/auth", login);
 router.use("/auth", signup);

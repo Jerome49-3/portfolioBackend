@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "packageManager": "yarn@4.6.0",
+  "packageManager": "yarn@4.9.2",
   "dependencies": {
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
@@ -14,6 +14,13 @@
     "uid2": "^1.0.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest",
+    "start:bnb": "yarn test test/indexPrime.test.js",
+    "start:ndm": "npx nodemon ./index.js"
+  },
+  "devDependencies": {
+    "jest": "^30.0.3",
+    "supertest": "^7.1.1"
   }
 }
