@@ -5,6 +5,7 @@
   "license": "MIT",
   "packageManager": "yarn@4.9.2",
   "dependencies": {
+    "axios": "^1.10.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
     "dotenv": "^16.5.0",
@@ -16,7 +17,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "start:bnb": "yarn test test/indexPrime.test.js",
+    "start:bnb": "yarn test test/airbnbed/aibnbed-url.test.js",
+    "start:marv": "yarn test test/appmarv/appmarv-url.test.js",
     "start:ndm": "npx nodemon ./index.js"
   },
   "devDependencies": {

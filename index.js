@@ -1,15 +1,29 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
 app.use(express.json());
 /********* CORS **********/
-app.use(cors());
+const cors = require("cors");
+
+console.log(
+  "process.env.URL_CORS_FRONTEND CORS on index.js:",
+  process.env.URL_CORS_FRONTEND_APPMARV
+);
+const corsOptions = {
+  origin: [
+    process.env.URL_CORS_FRONTEND_APPMARV,
+    process.env.URL_CORS_FRONTEND_LOCALHOST,
+  ],
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 /********* ROUTES **********/
-const airBnBed = require("./routes/backEndAirBnb/index.js");
+const airBnBed = require("./routes/airbnbed/index.js");
+const appMarv = require("./routes/appmarv/index.js");
+
 app.use("/airbnbed", airBnBed);
+app.use("/appmarv", appMarv);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome on my portfolio Backend" });

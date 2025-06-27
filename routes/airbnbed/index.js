@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.createConnection(process.env.MONGODB_URI_AIRBNBED);
 
 //************ import routes *******//
 

@@ -10,9 +10,6 @@ const User = mongoose.model("User", {
       type: String,
       required: true,
     },
-    description: {
-      type: String,
-    },
     // avatar: {
     //   type: Object,
     //   default:
