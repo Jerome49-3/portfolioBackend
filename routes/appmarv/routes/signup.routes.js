@@ -6,16 +6,17 @@ const encBase64 = require("crypto-js/enc-base64");
 const fileUpload = require("express-fileupload");
 
 //********* MODEL USER ***********//
-const User = require("../../../models/User.js");
+const UserMarv = require("../models/User.js");
 
 router.post("/signup", fileUpload(), async (req, res) => {
   // return res.status(200).json({ message: "je suis sur la route /signup" });
   console.log("je suis sur la route /signup");
-
   const { password, username, email } = req.body;
   console.log("req.body", req.body);
-  if (password !== undefined && email !== undefined) {
-    const userExist = await User.findOne({ email: email });
+  if (!password && !email) {
+    return res.status(400).json({ message: "bad request" });
+  } else {
+    const userExist = await UserMarv.findOne({ email: email });
     console.log("userExist", userExist);
     if (userExist) {
       return res.status(400).json({ message: "bad request" });
@@ -28,7 +29,7 @@ router.post("/signup", fileUpload(), async (req, res) => {
         const token = uid2(64);
         // console.log("token:", token);
         if ((hash && token !== null) || (hash && token !== undefined)) {
-          const newUser = new User({
+          const newUser = new UserMarv({
             email: email,
             account: {
               username: username,

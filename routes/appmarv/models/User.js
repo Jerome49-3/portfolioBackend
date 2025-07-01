@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const conn = mongoose.createConnection(process.env.MONGODB_URI_MARV);
 
-const User = mongoose.model("User", {
+const UserMarv = conn.model("UserMarv", {
   email: {
     type: String,
     required: true,
@@ -21,4 +22,4 @@ const User = mongoose.model("User", {
   salt: String,
 });
 
-module.exports = User;
+module.exports = UserMarv;

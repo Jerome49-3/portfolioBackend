@@ -6,7 +6,7 @@ const encBase64 = require("crypto-js/enc-base64");
 const fileUpload = require("express-fileupload");
 
 //********* MODEL USER ***********//
-const User = require("../../../../models/User");
+const User = require("../../../appmarv/models/User");
 // router.get("/signup", (req, res) => {
 //   return res.status(200).json({ message: "route signup" });
 // });
