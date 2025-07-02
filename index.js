@@ -18,7 +18,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-
+app.options("{*splat}", cors(corsOptions));
 /********* ROUTES **********/
 const airBnBed = require("./routes/airbnbed/index.js");
 const appMarv = require("./routes/appmarv/index.js");
