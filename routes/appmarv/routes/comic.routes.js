@@ -10,7 +10,7 @@ router.get(`/comic/:comicId`, async (req, res) => {
   // console.log("comicId:", comicId);
   try {
     const response = await axios.get(
-      `https://lereacteur-marvel-api.herokuapp.com/comic/${comicId}?apiKey=${process.env.API_KEY_MARVEL}`
+      `https://lereacteur-marvel-api.herokuapp.com/comic/${comicId}?apiKey=${process.env.API_KEY_MARVEL_REACTEUR}`
     );
     // console.log("response", response);
     if (response) {
