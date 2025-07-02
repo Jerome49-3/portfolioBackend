@@ -24,7 +24,6 @@ if (process.env.ENVIRONNEMENT === "developpement") {
   app.use(
     cors({
       origin: process.env.URL_CORS_LOCALHOST,
-      credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE"],
     })
   );
@@ -33,6 +32,7 @@ if (process.env.ENVIRONNEMENT === "developpement") {
     cors({
       origin: process.env.URL_CORS_FRONTEND,
       credentials: true,
+      optionsSuccessStatus: 200,
       methods: ["GET", "POST", "PUT", "DELETE"],
     })
   );
