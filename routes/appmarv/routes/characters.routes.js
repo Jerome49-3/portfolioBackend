@@ -30,6 +30,7 @@ router.get(`/characters`, async (req, res) => {
     }
   } catch (error) {
     console.log("error", error);
+    console.log("error.response:", error?.response);
   }
 });
 

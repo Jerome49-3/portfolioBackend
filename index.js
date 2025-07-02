@@ -9,23 +9,15 @@ console.log(
   "process.env.URL_CORS_FRONTEND_APPMARV on index.js:",
   process.env.URL_CORS_FRONTEND_APPMARV
 );
-// const corsOptions = {
-//   origin: [
-//     process.env.URL_CORS_FRONTEND_APPMARV,
-//     process.env.URL_CORS_FRONTEND_LOCALHOST,
-//   ],
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true,
-//   optionsSuccessStatus: 200,
-// };
-// app.use(cors(corsOptions));
-// app.options("{*splat}", cors(corsOptions));
 const corsOptions = {
-  origin: [
-    process.env.URL_CORS_FRONTEND_APPMARV,
-    process.env.URL_CORS_FRONTEND_LOCALHOST,
-  ],
+  origin: "*",
+  // origin: [
+  //   process.env.URL_CORS_FRONTEND_APPMARV,
+  //   process.env.URL_CORS_FRONTEND_LOCALHOST,
+  // ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
 app.use(cors(corsOptions));
 app.options("{*splat}", cors(corsOptions));
