@@ -4,7 +4,7 @@ const router = express.Router({ mergeParams: true });
 
 //***************** MONGOOSE ******************//
 const mongoose = require("mongoose");
-console.log("process.env.MONGODB_URI_MARV:", process.env.MONGODB_URI_MARV);
+// console.log("process.env.MONGODB_URI_MARV:", process.env.MONGODB_URI_MARV);
 const conn = mongoose.createConnection(process.env.MONGODB_URI_MARV);
 conn.on("connected", () => {
   console.log("connected to monggose");
