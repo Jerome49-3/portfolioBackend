@@ -4,6 +4,8 @@ const router = express.Router();
 
 //Get a list of comics
 router.get(`/comics`, async (req, res) => {
+  console.log("Im on a road /comics GET");
+
   // res.status(200).json({ message: "je suis sur la route GET /comics" });
   // console.log("req", req);
   const title = req.query.title || "";

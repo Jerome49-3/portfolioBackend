@@ -20,17 +20,15 @@ console.log(
 // };
 // app.use(cors(corsOptions));
 // app.options("{*splat}", cors(corsOptions));
-
-app.use(
-  cors({
-    origin: [
-      process.env.URL_CORS_FRONTEND_APPMARV,
-      process.env.URL_CORS_FRONTEND_LOCALHOST,
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
-
+const corsOptions = {
+  origin: [
+    process.env.URL_CORS_FRONTEND_APPMARV,
+    process.env.URL_CORS_FRONTEND_LOCALHOST,
+  ],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+};
+app.use(cors(corsOptions));
+app.options("{*splat}", cors(corsOptions));
 /********* ROUTES **********/
 const airBnBed = require("./routes/airbnbed/index.js");
 const appMarv = require("./routes/appmarv/index.js");
