@@ -5,10 +5,10 @@ app.use(express.json());
 /********* CORS **********/
 const cors = require("cors");
 
-// console.log(
-//   "process.env.URL_CORS_FRONTEND_APPMARV on index.js:",
-//   process.env.URL_CORS_FRONTEND_APPMARV
-// );
+console.log(
+  "process.env.URL_CORS_FRONTEND_APPMARV on index.js:",
+  process.env.URL_CORS_FRONTEND_APPMARV
+);
 // const corsOptions = {
 //   origin: [
 //     process.env.URL_CORS_FRONTEND_APPMARV,
@@ -20,23 +20,17 @@ const cors = require("cors");
 // };
 // app.use(cors(corsOptions));
 // app.options("{*splat}", cors(corsOptions));
-if (process.env.ENVIRONNEMENT === "developpement") {
-  app.use(
-    cors({
-      origin: process.env.URL_CORS_LOCALHOST,
-      methods: ["GET", "POST", "PUT", "DELETE"],
-    })
-  );
-} else if (process.env.ENVIRONNEMENT === "production") {
-  app.use(
-    cors({
-      origin: process.env.URL_CORS_FRONTEND,
-      credentials: true,
-      optionsSuccessStatus: 200,
-      methods: ["GET", "POST", "PUT", "DELETE"],
-    })
-  );
-}
+
+app.use(
+  cors({
+    origin: [
+      process.env.URL_CORS_FRONTEND_APPMARV,
+      process.env.URL_CORS_FRONTEND_LOCALHOST,
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
 /********* ROUTES **********/
 const airBnBed = require("./routes/airbnbed/index.js");
 const appMarv = require("./routes/appmarv/index.js");
