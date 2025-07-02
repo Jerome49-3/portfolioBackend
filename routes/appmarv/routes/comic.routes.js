@@ -4,6 +4,7 @@ const router = express.Router();
 
 //Get all informations of specific comic
 router.get(`/comic/:comicId`, async (req, res) => {
+  console.log("Im on a road /comic/:comicId GET");
   // res.status(200).json({ message: "je suis sur la route GET /comic/:comicId" });
   // console.log("req", req);
   const comicId = req.params.comicId;

@@ -34,5 +34,34 @@ router.use("/user", signup);
 router.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome on my projet Marvel" });
 });
+router.all("{*splat}", (req, res) => {
+  console.log(
+    "req.method:",
+    req.method,
+    "\n",
+    "req.url:",
+    req.url,
+    "\n",
+    "req.headers.origin:",
+    req.headers.origin,
+    "\n",
+    "req.headers.referer:",
+    req.headers.referer,
+    "\n",
+    "req.headers['access-control-request-method']:",
+    req.headers["access-control-request-method"],
+    "\n",
+    "req.headers['access-control-request-headers']:",
+    req.headers["access-control-request-headers"],
+    "\n",
+    "req.ip:",
+    req.ip,
+    "\n",
+    "req.connection.remoteAddress:",
+    req.connection.remoteAddress
+  );
+
+  console.log("All routes in /appmarv");
+});
 
 module.exports = router;

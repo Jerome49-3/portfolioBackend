@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 // const Character = require("../models/Character");
 
 router.get(`/characters`, async (req, res) => {
+  console.log("Im on a road /characters GET");
   // res.status(200).json({ message: "je suis sur la route GET /characters" });
   // console.log("req", req);
   try {

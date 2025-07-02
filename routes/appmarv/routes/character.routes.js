@@ -3,6 +3,7 @@ const axios = require("axios");
 const router = express.Router();
 
 router.get(`/character/:characterId`, async (req, res) => {
+  console.log("Im on a road /character/:characterId GET");
   // res.status(200).json({ message: "je suis sur la route GET /character/:characterId" });
   // console.log("req", req);
   try {

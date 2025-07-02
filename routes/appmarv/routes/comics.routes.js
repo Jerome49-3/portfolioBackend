@@ -28,6 +28,7 @@ router.get(`/comics`, async (req, res) => {
 
 //Get a list of comics containing a specific character
 router.get(`/comics/:characterId`, async (req, res) => {
+  console.log("Im on a road /comics/:characterId GET");
   // res.status(200).json({ message: "je suis sur la route GET /comics/:characterId" });
   // console.log("req", req);
   const characterId = req.params.characterId;

@@ -7,7 +7,7 @@ const fileUpload = require("express-fileupload");
 
 router.post("/login", fileUpload(), async (req, res) => {
   // return res.status(200).json({ message: "je suis sur la route /login" });
-  console.log("je suis sur la route /signup");
+  console.log("je suis sur la route /login");
   try {
     const { password, email } = req.body;
     if (password !== undefined && email !== undefined) {
