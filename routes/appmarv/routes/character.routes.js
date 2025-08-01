@@ -14,7 +14,7 @@ router.get(`/character/:characterId`, async (req, res) => {
     );
     // console.log("response.data:", response.data);
     if (response) {
-      // console.log("response.data:", response.data);
+      console.log("response.data:", response.data);
       res.status(200).json(response.data);
     }
   } catch (error) {

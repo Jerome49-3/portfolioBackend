@@ -6,6 +6,23 @@ const appMarv = require("../../routes/appmarv/index");
 const app = express();
 app.use(express.json());
 app.use("/appMarv", appMarv);
+let dbMock;
+
+jest.mock("mongoose", () => {
+  const dbMock = jest.requireActual("mongoose");
+  return {
+    ...dbMock,
+    createConnection: jest.fn(() => ({
+      model: jest.fn(),
+      on: jest.fn(),
+      close: jest.fn(),
+    })),
+  };
+});
+
+afterAll(async () => {
+  await dbMock?.close?.();
+});
 
 // decompose test in component (it)
 describe("GET /airbnbed", () => {

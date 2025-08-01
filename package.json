@@ -17,8 +17,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jest",
-    "start:bnb": "yarn test test/airbnbed/aibnbed-url.test.js",
-    "start:marv": "yarn test test/appmarv/appmarv-url.test.js",
+    "test:marv": "yarn jest test/appmarv",
+    "test:bnb": "yarn test test/airbnbed",
     "start:ndm": "npx nodemon ./index.js"
   },
   "devDependencies": {

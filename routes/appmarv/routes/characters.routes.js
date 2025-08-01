@@ -18,10 +18,10 @@ router.get(`/characters`, async (req, res) => {
     // console.log("response.data", response.data);
     if (response) {
       console.log("response.data.results", response.data.results);
-      console.log(
-        "response.headers.getAccess-Control-Allow-Origin:",
-        response.headers.get("Access-Control-Allow-Origin")
-      );
+      // console.log(
+      //   "response.headers.getAccess-Control-Allow-Origin:",
+      //   response.headers.get("Access-Control-Allow-Origin")
+      // );
 
       data = response.data.results;
       // console.log("data", data);
