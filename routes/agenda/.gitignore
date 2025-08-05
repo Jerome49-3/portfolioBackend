@@ -1,1 +1,19 @@
-node_modules
+# dependencies
+/node_modules
+
+# production
+/build
+
+# local env files
+.env*.local
+.env
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarn/install-state.gz
+.pnp.*

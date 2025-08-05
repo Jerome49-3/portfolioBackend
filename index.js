@@ -24,9 +24,11 @@ app.options("{*splat}", cors(corsOptions));
 /********* ROUTES **********/
 const airBnBed = require("./routes/airbnbed/index.js");
 const appMarv = require("./routes/appmarv/index.js");
+const appSendMail = require("./routes/sendmail/index.js");
 
 app.use("/airbnbed", airBnBed);
 app.use("/appmarv", appMarv);
+app.use("/sendmail", appSendMail);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome on my portfolio Backend" });
