@@ -10,7 +10,7 @@ console.log(
   process.env.URL_CORS_FRONTEND_APPMARV
 );
 const corsOptions = {
-  origin: "{*splat}",
+  origin: "*",
   // origin: [process.env.URL_CORS_FRONTEND_APPMARV],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
