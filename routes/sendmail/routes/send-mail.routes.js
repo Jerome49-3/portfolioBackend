@@ -9,9 +9,9 @@ const mgClient = mailgun.client({
   username: process.env.MAILGUN_USERNAME,
   key: process.env.MAILGUN_API_KEY,
 });
-
+console.log("mgClient:", mgClient);
 //add routes get /send-mail:
-router.get("/send-mail", async (req, res) => {
+router.get("/", async (req, res) => {
   console.log("je suis sur la route get send-mail");
   res.status(200).json({ message: "Welcome to my page get /send-mail " });
 });
@@ -19,27 +19,27 @@ router.get("/send-mail", async (req, res) => {
 router.post("/send-mail", async (req, res) => {
   console.log("je suis sur la route post send-mail");
   // res.status(200).json({ message: " welcome on my route sendMail " });
-  // console.log("req:", req);
+  console.log("req.body:", req.body);
   const { firstname, lastname, email, subject, message } = req.body;
   try {
-    if (req.body !== undefined) {
-      console.log("req.body:", req.body);
-      const response = await mgClient.messages.create(
-        process.env.MAILGUN_SANDBOX,
-        {
-          from: `${firstname} ${lastname} <${email}>`,
-          to: process.env.EMAIL_TO_ME,
-          subject: subject,
-          text: message,
-        }
-      );
-      console.log("response:", response);
-      res.status(200).json(response);
-    } else {
-      res.status(400).json({ message: "bad request" });
-    }
+    // if (req.body !== undefined) {
+    //   console.log("req.body:", req.body);
+    //   const response = await mgClient.messages.create(
+    //     process.env.MAILGUN_SANDBOX,
+    //     {
+    //       from: `${firstname} ${lastname} <${email}>`,
+    //       to: process.env.EMAIL_TO_ME,
+    //       subject: subject,
+    //       text: message,
+    //     }
+    //   );
+    //   console.log("response:", response);
+    //   res.status(200).json(response);
+    // } else {
+    //   res.status(400).json({ message: "bad request" });
+    // }
   } catch (error) {
-    console.log("error:", error.status, error.message);
+    console.log("error in POST /send-mail:", error.status, error.message);
   }
 });
 
