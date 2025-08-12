@@ -6,12 +6,12 @@ app.use(express.json());
 const cors = require("cors");
 
 console.log(
-  "process.env.URL_CORS_FRONTEND_APPMARV on index.js:",
-  process.env.URL_CORS_FRONTEND_APPMARV
+  "URL_CORS_FRONTEND_LOCALHOST on index.js:",
+  process.env.URL_CORS_FRONTEND_LOCALHOST
 );
 const corsOptions = {
-  origin: "*",
-  // origin: [process.env.URL_CORS_FRONTEND_APPMARV],
+  // origin: "*",
+  origin: ["*", process.env.URL_CORS_FRONTEND_LOCALHOST],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 204,
