@@ -10,8 +10,8 @@ console.log(
   process.env.URL_CORS_FRONTEND_APPMARV
 );
 const corsOptions = {
-  // origin: "*",
-  origin: [process.env.URL_CORS_FRONTEND_APPMARV],
+  origin: "*",
+  // origin: [process.env.URL_CORS_FRONTEND_APPMARV],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 204,
