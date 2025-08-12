@@ -9,7 +9,7 @@ const mgClient = mailgun.client({
   username: process.env.MAILGUN_USERNAME,
   key: process.env.MAILGUN_API_KEY,
 });
-console.log("mgClient:", mgClient);
+// console.log("mgClient:", mgClient);
 //add routes get /send-mail:
 router.get("/", async (req, res) => {
   console.log("je suis sur la route get send-mail");
