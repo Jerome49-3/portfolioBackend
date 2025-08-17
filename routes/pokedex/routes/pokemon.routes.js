@@ -12,7 +12,7 @@ router.get("/pokemon/:pokeName", async (req, res) => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${pokeName}`
     );
-    console.log("response.data on /pokemon/:pokeName:", response.data);
+    // console.log("response.data on /pokemon/:pokeName:", response.data);
     const id = response?.data?.id;
     const imgBackDefault = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${id}.png`;
     const imgBackShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${id}.png`;
@@ -21,15 +21,11 @@ router.get("/pokemon/:pokeName", async (req, res) => {
     const species = await axios.get(
       `https://pokeapi.co/api/v2/pokemon-species/${id}`
     );
-    console.log("species.data on /pokemon/:pokeName:", species.data);
+    // console.log("species.data on /pokemon/:pokeName:", species.data);
     res.status(201).json({
       results: response.data,
-      images: {
-        imgBackDefault,
-        imgBackShiny,
-        imgFrontDefault,
-        imgFrontShiny,
-      },
+      images: [imgFrontDefault, imgBackDefault, imgFrontShiny, imgBackShiny],
+      // species: species,
     });
   } catch (error) {
     console.log("error in catch:", error);
