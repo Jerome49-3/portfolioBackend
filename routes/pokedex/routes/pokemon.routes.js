@@ -13,20 +13,29 @@ router.get("/pokemon/:pokeName", async (req, res) => {
       `https://pokeapi.co/api/v2/pokemon/${pokeName}`
     );
     // console.log("response.data on /pokemon/:pokeName:", response.data);
-    const id = response?.data?.id;
-    const imgBackDefault = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${id}.png`;
-    const imgBackShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${id}.png`;
-    const imgFrontDefault = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-    const imgFrontShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png`;
+    const pokeId = response?.data?.id;
+    const imgBackDefault = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokeId}.png`;
+    const imgBackShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${pokeId}.png`;
+    const imgFrontDefault = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeId}.png`;
+    const imgFrontShiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokeId}.png`;
+    const imagesArr = [
+      imgFrontDefault,
+      imgBackDefault,
+      imgFrontShiny,
+      imgBackShiny,
+    ];
+    const arrImgsLength = imagesArr.length;
     const species = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon-species/${id}`
+      `https://pokeapi.co/api/v2/pokemon-species/${pokeId}`
     );
-    // console.log("species.data on /pokemon/:pokeName:", species.data);
-    res.status(201).json({
-      results: response.data,
-      images: [imgFrontDefault, imgBackDefault, imgFrontShiny, imgBackShiny],
-      // species: species,
-    });
+    console.log("species.data on /pokemon/:pokeName:", species.data);
+    const pokemonData = {
+      results: response?.data,
+      images: imagesArr,
+      imgsArrLength: arrImgsLength,
+      species: species?.data,
+    };
+    res.status(201).json(pokemonData);
   } catch (error) {
     console.log("error in catch:", error);
   }
