@@ -8,7 +8,7 @@ router.get("/pokemons", async (req, res) => {
   const offset = req.query.offset;
   console.log("offset in Home:", offset);
   const limit = req.query.limit;
-  console.log("limit in Home:", limit);
+  // console.log("limit in Home:", limit);
 
   try {
     const response = await axios.get(
@@ -29,7 +29,7 @@ router.get("/pokemons", async (req, res) => {
         const newElPok = { ...elPok };
         // console.log("newElPok in GET pokemons:", newElPok);
         const pokeUrl = new URL(newElPok.url);
-        console.log("pokeUrl in GET pokemons:", pokeUrl);
+        // console.log("pokeUrl in GET pokemons:", pokeUrl);
         const idStr = pokeUrl.pathname
           .split("/")
           .filter((el) => {
@@ -42,7 +42,7 @@ router.get("/pokemons", async (req, res) => {
             }
           })
           .join("");
-        console.log("idStr in GET pokemons:", idStr);
+        // console.log("idStr in GET pokemons:", idStr);
         const id = Number(idStr);
         const pokeName = newElPok.name;
         const pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;

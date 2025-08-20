@@ -5,9 +5,11 @@ const router = express.Router({ mergeParams: true });
 const pokemons = require("./routes/pokemons.routes");
 const pokemon = require("./routes/pokemon.routes");
 const types = require("./routes/types.routes");
+const item = require("./routes/item.routes");
 router.use(pokemons);
 router.use(pokemon);
 router.use(types);
+router.use(item);
 router.get("/", (req, res) => {
   console.log("je suis sur la route get / at projet pokedex");
   res.status(200).json({ message: "Welcome on my pokedex project" });
